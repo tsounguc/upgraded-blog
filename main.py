@@ -21,5 +21,14 @@ def contact_page():
     return render_template('contact.html')
 
 
+@app.route('/post/<int:blog_id>')
+def post_page(blog_id):
+    requested_blog = None
+    for blog in blogs:
+        if blog['id'] == blog_id:
+            requested_blog = blog
+    return render_template('post.html', blog=requested_blog)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
